@@ -138,4 +138,5 @@ demo-gmang-cert  MANAGED  2018-10-29T10:47:05.450-07:00  2019-01-27T09:48:20.000
 
 Next visit https://demo-gman.collaborizm.com in your browser and you should see your GKE app running with a Google managed cert
 
-  
+![successful](screenshots/success.png)
+
