@@ -2,20 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    run: https-demo # Label for the Deployment
-  name: https-demo # Name of Deployment
-spec: # Deployment's specification
+    run: https-demo
+  name: https-demo
+spec:
   selector:
     matchLabels:
-      run: https-demo # Labels Pods from this Deployment
-  template: # Pod template
+      run: https-demo
+  template:
     metadata:
       labels:
-        run: https-demo # Labels Pods from this Deployment
-    spec: # Pod specification; each Pod created by this Deployment has this specification
+        run: https-demo
+    spec:
       containers:
-      - image: k8s.gcr.io/serve_hostname:v1.4 # Application to run in Deployment's Pods
-        name: hostname # Container name
+      - image: k8s.gcr.io/serve_hostname:v1.4
+        name: hostname
         ports:
-        - containerPort: 9376 # Port used by containers running in these Pods
+        - containerPort: 9376
           protocol: TCP

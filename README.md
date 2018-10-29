@@ -1,24 +1,31 @@
-### Create a cluster
+Create a cluster
 
 ```bash
-gcloud beta container --project "kube-play-2" clusters create "your-first-cluster-1" --zone "us-central1-a" --username "admin" --cluster-version "1.9.7-gke.6" --machine-type "g1-small" --image-type "COS" --disk-type "pd-standard" --disk-size "30" --scopes "https://www.googleapis.com/auth/compute","https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --num-nodes "1" --no-enable-cloud-logging --no-enable-cloud-monitoring --enable-ip-alias --network "projects/kube-play-2/global/networks/default" --subnetwork "projects/kube-play-2/regions/us-central1/subnetworks/default" --default-max-pods-per-node "110" --addons HorizontalPodAutoscaling,HttpLoadBalancing --enable-autoupgrade --enable-autorepair
+gcloud container clusters create https-demo-cluster --zone us-central1-c 
+
+
+# after a few minutes and many warnings you should get a response similar to  
+
+NAME                LOCATION       MASTER_VERSION  MASTER_IP       MACHINE_TYPE   NODE_VERSION  NUM_NODES  STATUS
+https-demo-cluster  us-central1-c  1.9.7-gke.6     35.226.141.220  n1-standard-1  1.9.7-gke.6   3          RUNNING
 ```
 
-### Connect kubectl
+Connect kubectl
 
 ```bash
-gcloud container clusters get-credentials your-first-cluster-1 --zone us-central1-a --project kube-play-2
+gcloud container clusters get-credentials https-demo-cluster
+
+# response
+kubeconfig entry generated for https-demo-cluster.
 ```
 
-### Apply Configs 
+Apply configs 
 
 ```bash
-kubectl apply -f https-demo.yaml
-kubectl apply -f nge-demo-svc.yaml
-kubectl apply -f nge-demo-ing.yaml
+kubectl apply -f demo-app.yaml
+kubectl apply -f demo-svc.yaml
+kubectl apply -f demo-ing.yaml
 ```
-
-
 
 Get the IP address of your ingress controller
 
@@ -35,16 +42,16 @@ demo-ing   *        35.241.35.109       80          68s
 ```
 
 Visit the IP address in your browser, if it doesn't 
-show up right away hit refresh, it might take a few minutes 
+show up right away hit refresh, it might take around 10 minutes 
 for the app to be fully available.
 
  
 The app is simply outputting the name of the host it's running 
 on so you're browser should output something similar to 
 
-```
-https-demo-8699f6bb4b-p7dxf 
-```
+
+!(host name app running on HTTP)[screenshorts/non_http_success.png] 
+
 
 ## Hooking up the Google managed cert 
 
