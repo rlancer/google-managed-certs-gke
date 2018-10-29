@@ -2,7 +2,7 @@
  
 > Special thanks to @dannyzen from Google for helping Collaborizm move to GCP, he did help with this post but neither he nor Google endorse it's methods
  
-## Getting HTTPS going with GKE can be challenging. 
+## Getting HTTPS working on GKE can be challenging. 
 
 Currently there are two main options:
 
