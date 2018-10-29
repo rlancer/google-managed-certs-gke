@@ -45,7 +45,7 @@ cd gke-https
 Create a cluster:
 
 ```bash
-gcloud container clusters create https-demo-cluster --zone us-central1-c 
+gcloud container clusters create https-demo-cluster --zone us-central1-c --machine-type g1-small --num-nodes 1
 
 # after a few minutes and many warnings you should get a response similar to  
 
