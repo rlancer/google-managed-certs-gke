@@ -11,7 +11,7 @@ you'll need to manage your own certs, which seems antiquated pre [
 Lets Encrypt](https://letsencrypt.org/)        
 * Install a certificate provisioning system on your cluster such as [Cert Manager](https://github.com/jetstack/cert-manager) - involves installing extra apps on your cluster, which you'll have to maintain and pay for
 
-There is a third solution: [Google Managed SSL Certs](https://cloud.google.com/load-balancing/docs/ssl-certificates#certificate-resource-status).
+There is a third solution: [Google Managed SSL Certs](https://cloud.google.com/load-balancing/docs/ssl-certificates#certificate-resource-status)
  
 * They auto renew 
 * Offload all SSL handling to Google's Load Balancer (which every GKE cluster uses) 
