@@ -50,7 +50,7 @@ The app is simply outputting the name of the host it's running
 on so you're browser should output something similar to 
 
 
-!(host name app running on HTTP)[screenshorts/non_http_success.png] 
+![host name app running on HTTP](screenshorts/non_http_success.png) 
 
 
 ## Hooking up the Google managed cert 
