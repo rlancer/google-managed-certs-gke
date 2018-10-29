@@ -14,7 +14,7 @@ Lets Encrypt](https://letsencrypt.org/)
 There is a third solution: [Google Managed SSL Certs](https://cloud.google.com/load-balancing/docs/ssl-certificates#certificate-resource-status).
  
 * They auto renew 
-* Off load all SSL handling to Google's Load Balancer (which every GKE cluster uses) 
+* Offload all SSL handling to Google's Load Balancer (which every GKE cluster uses) 
 * Lower infrastructure costs   
  
 Downsides:
@@ -32,7 +32,7 @@ This guide uses an undocumented features of GKE.
 Suggest creating a new GKE project for this to not pollute anything you have in production.
  
 Use ```gcloud init``` to create a configuration. 
-If you have trouble taming your confirmations [check out my other repo](https://github.com/rlancer/GCloud-Configuration-Auto-Switcher), it's a small script to help switch configs based on a .gcloudrc file. 
+If you have trouble taming your configurations [check out my other repo](https://github.com/rlancer/GCloud-Configuration-Auto-Switcher), it's a small script to help switch configs based on a .gcloudrc file. 
  
 
 Clone this repo, we'll be using some YAML from it: 
