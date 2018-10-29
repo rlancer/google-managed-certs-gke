@@ -1,4 +1,4 @@
-# Using Google Managed  SSL Certificates with GKE  
+# Using Google Managed  SSL Certificates on GKE  
  
 > Special thanks to @dannyzen from Google for helping Collaborizm move to GCP, he did help with this post but neither he nor Google endorse it's methods
  
