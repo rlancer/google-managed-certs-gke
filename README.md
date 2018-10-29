@@ -1,8 +1,8 @@
 # Using Google Managed  SSL Certificates with GKE  
  
-> Special thanks to @dannyzen from Google for helping Collaborizm move to GCP, he did help with this post but does not endorse it's methods
+> Special thanks to @dannyzen from Google for helping Collaborizm move to GCP, he did help with this post but neither he nore Google endorse it's methods!
  
-Getting HTTPS going with GKE can be challenging. 
+## Getting HTTPS going with GKE can be challenging. 
 
 Currently there are two main options 
 
@@ -10,7 +10,7 @@ Currently there are two main options
 * Install a certificate provisioning system on your cluster such as [Cert Manager](https://github.com/jetstack/cert-manager)
 
 The downside to the first solution is that you'll need to manage your own certs, which seams so pre [
-Lets Encrypt](https://letsencrypt.org/)'
+Lets Encrypt](https://letsencrypt.org/)
 
 The second solution involves installing extra apps on your cluster, which you'll have to maintain and pay for.
 
@@ -30,7 +30,7 @@ Google's Load Balancer (which every GKE cluster uses) before the traffic reaches
 Clone this repo, we'll be using some YAML from it 
 
 ```bash
-git clone path-to repo
+git clone git@github.com:rlancer/google-managed-certs-gke.git
 cd gke-https
 ```
 
