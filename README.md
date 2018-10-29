@@ -42,7 +42,7 @@ git clone git@github.com:rlancer/google-managed-certs-gke.git
 cd gke-https
 ```
 
-Create a cluster, for this demo the cluster only needs one small node:
+Create a Cluster, for this demo the cluster only needs one small node:
 
 ```bash
 gcloud container clusters create https-demo-cluster --zone us-central1-c --machine-type g1-small --num-nodes 1
@@ -53,7 +53,7 @@ NAME                LOCATION       MASTER_VERSION  MASTER_IP       MACHINE_TYPE 
 https-demo-cluster  us-central1-c  1.9.7-gke.6     35.226.141.220  n1-standard-1  1.9.7-gke.6   3          RUNNING
 ```
 
-Connect kubectl:
+Connect Kubectl:
 
 ```bash
 gcloud container clusters get-credentials https-demo-cluster
@@ -69,7 +69,7 @@ kubectl apply -f demo-svc.yaml
 kubectl apply -f demo-ing.yaml
 ```
 
-Get the IP address of your ingress controller:
+Get the IP address of your Ingress Controller:
 
 ```bash
  kubectl get ingress -w 
@@ -91,15 +91,15 @@ on.
 ![host name app running on HTTP](screenshots/non_http_success.png) 
 
 
-## Hooking up the Google managed cert 
+## Hooking up the Google Managed Cert 
 
-Create the Google managed cert:
+Create the Google Managed Cert:
 
 ```bash
 gcloud beta compute ssl-certificates create "demo-gmang-cert" --domains demo-gman.collaborizm.com
 ```
 
-Get existing URL maps:
+Get existing URL Maps:
 
 ```bash
 gcloud compute url-maps list
@@ -110,7 +110,7 @@ NAME                                       DEFAULT_SERVICE
 k8s-um-default-demo-ing--3287e1f664ff7581  backendServices/k8s-be-31012--3287e1f664ff7581
 ```
 
-Create the HTTPS target proxy. Make sure to sub out the --url-map with your value:
+Create the HTTPS Target Proxy. Make sure to sub out the --url-map with your value:
 ```bash
 gcloud compute target-https-proxies create https-target --url-map=URL_MAP_VALUE_FROM_ABOVE --ssl-certificates=demo-gmang-cert
 
@@ -120,19 +120,19 @@ NAME          SSL_CERTIFICATES  URL_MAP
 https-target  demo-gmang-cert   k8s-um-default-demo-ing--3287e1f664ff7581
 ```
 
-Create a global static IP address:
+Create a Global Static IP Address:
 ```bash
 gcloud compute addresses create static-https-ip --global --ip-version IPV4
 
 Created [https://www.googleapis.com/compute/v1/projects/kube-https-demo/global/addresses/static-https-ip].
 ```
 
-Create a Global forwarding rule:
+Create a Global Forwarding Rule linking you're newly created IP Address:
 ```bash
 gcloud compute forwarding-rules create https-global-forwarding-rule --global --ip-protocol=TCP --ports=443 --target-https-proxy=https-target --address static-https-ip 
 ``` 
 
-Adjust the service to include the target proxy, edit the demo-svc.yaml to include the target-proxy annotation: **This is undocumented, could be a bad move...**
+Adjust the Service to include the Target Proxy, edit demo-svc.yaml to include the target-proxy Annotation: **This is undocumented, could be a bad move...**
 
 ```yaml
 apiVersion: v1
@@ -153,7 +153,7 @@ spec:
     targetPort: 9376
 ```
 
-Get the IP address assigned to the target proxy:
+Get the IP Address assigned to the Target Proxy:
 
 ```bash
 gcloud compute addresses list
@@ -163,7 +163,7 @@ static-https-ip          35.227.227.95  IN_USE
 
 ```
 
-Create an A record with the IP address (on CloudFlare we turned off proxying, hence the gray cloud)
+Create an A Record with the IP Address (on CloudFlare we turned off proxying, hence the gray cloud)
 
 ![dns entry CloudFlare](screenshots/dns_entry.png)
 
