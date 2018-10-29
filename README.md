@@ -42,7 +42,7 @@ git clone git@github.com:rlancer/google-managed-certs-gke.git
 cd gke-https
 ```
 
-Create a cluster:
+Create a cluster, for this demo the cluster only needs one small node:
 
 ```bash
 gcloud container clusters create https-demo-cluster --zone us-central1-c --machine-type g1-small --num-nodes 1
