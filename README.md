@@ -132,8 +132,6 @@ Create a Global forwarding rule:
 gcloud compute forwarding-rules create https-global-forwarding-rule --global --ip-protocol=TCP --ports=443 --target-https-proxy=https-target --address static-https-ip 
 ``` 
 
-
-
 Adjust the service to include the target proxy, edit the demo-svc.yaml to include the target-proxy annotation: **This is undocumented, could be a bad move...**
 
 ```yaml
@@ -154,7 +152,6 @@ spec:
     port: 333
     targetPort: 9376
 ```
-
 
 Get the IP address assigned to the target proxy:
 
