@@ -45,7 +45,6 @@ Create a cluster:
 ```bash
 gcloud container clusters create https-demo-cluster --zone us-central1-c 
 
-
 # after a few minutes and many warnings you should get a response similar to  
 
 NAME                LOCATION       MASTER_VERSION  MASTER_IP       MACHINE_TYPE   NODE_VERSION  NUM_NODES  STATUS
@@ -60,9 +59,7 @@ gcloud container clusters get-credentials https-demo-cluster
 # response
 kubeconfig entry generated for https-demo-cluster.
 ```
-
 Apply configs:  
-
 
 ```bash
 kubectl apply -f demo-app.yaml
@@ -88,7 +85,6 @@ for the app to be fully available.
 
 The app is simply outputting the name of the host it's running 
 on.
-
 
 ![host name app running on HTTP](screenshots/non_http_success.png) 
 
@@ -134,7 +130,7 @@ Create a Global forwarding rule:
 gcloud compute forwarding-rules create https-global-forwarding-rule --global --ip-protocol=TCP --ports=443 --target-https-proxy=https-target --address static-https-ip 
 ``` 
 
-Adjust service to include target proxy, edit the demo-svc.yaml to include the target-proxy annotation:
+Adjust service to include target proxy, edit the demo-svc.yaml to include the target-proxy annotation. **This is the undocumented part**:
 
 ```yaml
 apiVersion: v1
@@ -187,4 +183,3 @@ demo-gmang-cert  MANAGED  2018-10-29T10:47:05.450-07:00  2019-01-27T09:48:20.000
 Next visit [https://demo-gman.collaborizm.com](https://demo-gman.collaborizm.com) in your browser and you should see your GKE app running with a Google managed cert.
 
 ![successful](screenshots/success.png)
-
