@@ -135,8 +135,8 @@ kind: Service
 metadata:
   name: demo-svc
   # Add this annotation
-++  annotations:
-++    ingress.kubernetes.io/target-proxy: https-target
+  annotations:
+    ingress.kubernetes.io/target-proxy: https-target
 spec:
   type: NodePort
   selector:
