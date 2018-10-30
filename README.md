@@ -24,8 +24,7 @@ Downsides:
    
 **Proceed with caution!!!**
 
-This guide uses an undocumented features of GKE.    
-
+This guide uses an undocumented GKE annotation.
  
  ## Part 1 &middot; Setup a Cluster
  
