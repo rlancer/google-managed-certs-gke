@@ -1,4 +1,4 @@
-# Using Google Managed  SSL Certificates on GKE  
+# How to use Google Managed SSL Certificates on GKE
  
 > Special thanks to [@dannyzen](https://github.com/dannyzen) from Google for helping Collaborizm move to GCP. He did help with this post but neither he nor Google endorse its methods.
  
@@ -104,7 +104,7 @@ NAME                                       DEFAULT_SERVICE
 k8s-um-default-demo-ing--3287e1f664ff7581  backendServices/k8s-be-31012--3287e1f664ff7581
 ```
 
-Create the HTTPS Target Proxy. Make sure to sub out the --url-map with your value:
+Create the HTTPS Target Proxy. Make sure to sub out --url-map and --ssl-certificate with your values:
 ```bash
 $> gcloud compute target-https-proxies create https-target --url-map=URL_MAP_VALUE_FROM_ABOVE --ssl-certificates=demo-gmang-cert
 
