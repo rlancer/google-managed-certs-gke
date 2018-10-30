@@ -150,7 +150,7 @@ spec:
     targetPort: 9376
 ```
 
-Apply the new service:
+Apply the new Service:
 
 ```bash
 kubectl apply -f demo-svc.yaml
