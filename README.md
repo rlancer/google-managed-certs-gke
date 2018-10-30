@@ -184,11 +184,6 @@ Next visit [https://demo-gman.collaborizm.com](https://demo-gman.collaborizm.com
 
 ![successful](screenshots/success.png)
 
-## Alternative aproach 
-
-Potentially instead of modifying the Service to include a reference to the new Target Proxy, it would be possible to update 
-the current Target Proxy with the Google Managed Cert, the advantage to this approach 
-
 ## Interested in Google Cloud Platform?
 
 Start or join a project on [Collaborizm](https://www.collaborizm.com)! Our partnership with GCP could net you a few grand in credits. 
