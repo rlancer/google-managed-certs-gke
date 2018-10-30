@@ -95,7 +95,7 @@ $> gcloud beta compute ssl-certificates create "demo-gmang-cert" --domains demo-
 ```
 
 Get existing URL Maps:
->You'll need this value when creating the target proxy in the next step
+> There should only be one URL Map and you'll need the value under NAME when creating the target proxy in the next step
 ```bash
 $> gcloud compute url-maps list
 
@@ -127,7 +127,7 @@ Create a Global Forwarding Rule linking youre newly created IP Address:
 $> gcloud compute forwarding-rules create https-global-forwarding-rule --global --ip-protocol=TCP --ports=443 --target-https-proxy=https-target --address static-https-ip 
 ``` 
 
-Adjust the Service to include the Target Proxy, edit demo-svc.yaml to include the target-proxy Annotation: **This is undocumented, could be a bad move...**
+Adjust the Service to include the Target Proxy, edit demo-svc.yaml to include the target-proxy Annotation. **This is undocumented, could be a bad move...**
 
 ```yaml
 apiVersion: v1
@@ -149,13 +149,11 @@ spec:
 ```
 
 Apply the new Service:
-
 ```bash
 $> kubetl apply -f demo-svc.yaml
 ```
 
 Get the IP Address assigned to the Target Proxy:
-
 ```bash
 $> gcloud compute addresses list
  
@@ -167,7 +165,6 @@ static-https-ip          35.227.227.95  IN_USE
 Create an A Record with the IP Address (on CloudFlare we turned off proxying, hence the gray cloud)
 
 ![dns entry CloudFlare](screenshots/dns_entry.png)
-
 
 Watch to see if your Cert has been provisioned, this could take as long as half an hour: 
 
