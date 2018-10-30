@@ -28,11 +28,10 @@ This guide uses an undocumented GKE annotation.
  
  ## Part 1 &middot; Setup a Cluster
  
-Suggest creating a new GKE project for this to not pollute anything you have in production.
+Create a new GKE project for this to not pollute anything you have in production.
  
 Use ```gcloud init``` to create a configuration. 
 If you have trouble taming your configurations [check out my other repo](https://github.com/rlancer/GCloud-Configuration-Auto-Switcher), it's a small script to help switch configs based on a .gcloudrc file. 
- 
 
 Clone this repo, we'll be using some YAML from it: 
 
