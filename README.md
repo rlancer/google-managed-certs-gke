@@ -56,9 +56,8 @@ https-demo-cluster  us-central1-c  1.9.7-gke.6     35.226.141.220  n1-standard-1
 Connect Kubectl:
 
 ```bash
-gcloud container clusters get-credentials https-demo-cluster
+gcloud container clusters get-credentials https-demo-cluster --zone us-central1-c 
 
-# response
 kubeconfig entry generated for https-demo-cluster.
 ```
 Apply configs:  
@@ -184,6 +183,11 @@ demo-gmang-cert  MANAGED  2018-10-29T10:47:05.450-07:00  2019-01-27T09:48:20.000
 Next visit [https://demo-gman.collaborizm.com](https://demo-gman.collaborizm.com) in your browser and you should see your GKE app running with a Google managed cert.
 
 ![successful](screenshots/success.png)
+
+## Alternative aproach 
+
+Potentially instead of modifying the Service to include a reference to the new Target Proxy, it would be possible to update 
+the current Target Proxy with the Google Managed Cert, the advantage to this approach 
 
 ## Interested in Google Cloud Platform?
 
