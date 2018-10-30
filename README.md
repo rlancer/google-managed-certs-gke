@@ -27,7 +27,7 @@ Downsides:
 This guide uses an undocumented features of GKE.    
 
  
- ## Setup a cluster
+ ## Part 1 &middot; Setup a Cluster
  
 Suggest creating a new GKE project for this to not pollute anything you have in production.
  
@@ -90,7 +90,7 @@ on.
 ![host name app running on HTTP](screenshots/non_http_success.png) 
 
 
-## Hooking up the Google Managed Cert 
+## Part 2 &middot; Hook up the Google Managed Cert 
 
 Create the Google Managed Cert:
 
