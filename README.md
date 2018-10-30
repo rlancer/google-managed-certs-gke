@@ -1,6 +1,6 @@
 # Using Google Managed  SSL Certificates on GKE  
  
-> Special thanks to @dannyzen from Google for helping Collaborizm move to GCP. He did help with this post but neither he nor Google endorse its methods
+> Special thanks to @dannyzen from Google for helping Collaborizm move to GCP. He did help with this post but neither he nor Google endorse its methods.
  
 ## Getting HTTPS working on GKE can be challenging
 
@@ -78,9 +78,7 @@ demo-ing   *                            80          9s
 demo-ing   *        35.241.35.109       80          68s
 ```
 
-Visit the IP address in your browser, if it doesn't 
-show up right away hit refresh, it might take around 10 minutes 
-for the app to be fully available.
+Visit the IP address in your browser. Hit refresh if does not appear. It may as long as 10 minutes for the app to be fully available.
 
 The app is simply outputting the name of the host it's running 
 on.
@@ -124,7 +122,7 @@ gcloud compute addresses create static-https-ip --global --ip-version IPV4
 Created [https://www.googleapis.com/compute/v1/projects/kube-https-demo/global/addresses/static-https-ip].
 ```
 
-Create a Global Forwarding Rule linking you're newly created IP Address:
+Create a Global Forwarding Rule linking youre newly created IP Address:
 ```bash
 gcloud compute forwarding-rules create https-global-forwarding-rule --global --ip-protocol=TCP --ports=443 --target-https-proxy=https-target --address static-https-ip 
 ``` 
