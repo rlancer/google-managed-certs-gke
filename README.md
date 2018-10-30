@@ -150,6 +150,12 @@ spec:
     targetPort: 9376
 ```
 
+Apply the new service:
+
+```bash
+kubectl apply -f demo-svc.yaml
+```
+
 Get the IP Address assigned to the Target Proxy:
 
 ```bash
