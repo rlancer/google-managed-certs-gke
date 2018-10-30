@@ -169,7 +169,7 @@ Create an A Record with the IP Address (on CloudFlare we turned off proxying, he
 ![dns entry CloudFlare](screenshots/dns_entry.png)
 
 
-Watch to see if your cert has been provisioned, this could take half an hour: 
+Watch to see if your Cert has been provisioned, this could take up to half an hour: 
 
 ```bash
 watch gcloud beta compute ssl-certificates list
