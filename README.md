@@ -7,7 +7,7 @@
 Currently there are two main options:
 
 * You can [create certs and add them to your ingress controller](https://cloud.google.com/kubernetes-engine/docs/how-to/ingress-multi-ssl) - 
-you'll need to manage your own certs, which seems antiquated pre [
+you'll need to manage your own certs, which seems antiquated post [
 Lets Encrypt](https://letsencrypt.org/)        
 * Install a certificate provisioning system on your cluster such as [Cert Manager](https://github.com/jetstack/cert-manager) - involves installing extra apps on your cluster, which you'll have to maintain and pay for
 
