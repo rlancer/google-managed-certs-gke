@@ -1,6 +1,6 @@
 # Using Google Managed  SSL Certificates on GKE  
  
-> Special thanks to @dannyzen from Google for helping Collaborizm move to GCP. He did help with this post but neither he nor Google endorse its methods.
+> Special thanks to [@dannyzen](https://github.com/dannyzen) from Google for helping Collaborizm move to GCP. He did help with this post but neither he nor Google endorse its methods.
  
 ## Getting HTTPS working on GKE can be challenging
 
