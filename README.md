@@ -36,14 +36,14 @@ If you have trouble taming your configurations [check out my other repo](https:/
 Clone this repo, we'll be using some YAML from it: 
 
 ```bash
-$> git clone git@github.com:rlancer/google-managed-certs-gke.git
-$> cd gke-https
+$ git clone git@github.com:rlancer/google-managed-certs-gke.git
+$ cd gke-https
 ```
 
 Create a Cluster, for this demo the cluster only needs one small node:
 
 ```bash
-$> gcloud container clusters create https-demo-cluster --zone us-central1-c --machine-type g1-small --num-nodes 1
+$ gcloud container clusters create https-demo-cluster --zone us-central1-c --machine-type g1-small --num-nodes 1
 
 >>
 NAME                LOCATION       MASTER_VERSION  MASTER_IP       MACHINE_TYPE   NODE_VERSION  NUM_NODES  STATUS
@@ -53,16 +53,16 @@ https-demo-cluster  us-central1-c  1.9.7-gke.6     35.226.141.220  n1-standard-1
 Connect Kubectl:
 
 ```bash
-$> gcloud container clusters get-credentials https-demo-cluster --zone us-central1-c 
+$ gcloud container clusters get-credentials https-demo-cluster --zone us-central1-c 
 
 >> kubeconfig entry generated for https-demo-cluster.
 ```
 Apply configs:  
 
 ```bash
-$> kubectl apply -f demo-app.yaml
-$> kubectl apply -f demo-svc.yaml
-$> kubectl apply -f demo-ing.yaml
+$ kubectl apply -f demo-app.yaml
+$ kubectl apply -f demo-svc.yaml
+$ kubectl apply -f demo-ing.yaml
 ```
 
 Get the IP address of your Ingress Controller:
@@ -70,7 +70,7 @@ Get the IP address of your Ingress Controller:
 > Within a few minutes for the IP address should appear
 
 ```bash
-$> kubectl get ingress -w 
+$ kubectl get ingress -w 
 
 >>  
 NAME       HOSTS    ADDRESS             PORTS       AGE
@@ -91,13 +91,13 @@ on.
 Create the Google Managed Cert:
 
 ```bash
-$> gcloud beta compute ssl-certificates create "demo-gmang-cert" --domains demo-gman.collaborizm.com
+$ gcloud beta compute ssl-certificates create "demo-gmang-cert" --domains demo-gman.collaborizm.com
 ```
 
 Get existing URL Maps:
 > There should only be one URL Map and you'll need the value under NAME when creating the target proxy in the next step
 ```bash
-$> gcloud compute url-maps list
+$ gcloud compute url-maps list
 
 >>
 NAME                                       DEFAULT_SERVICE
@@ -106,7 +106,7 @@ k8s-um-default-demo-ing--3287e1f664ff7581  backendServices/k8s-be-31012--3287e1f
 
 Create the HTTPS Target Proxy. Make sure to sub out --url-map with your value:
 ```bash
-$> gcloud compute target-https-proxies create https-target --url-map=URL_MAP_VALUE_FROM_ABOVE --ssl-certificates=demo-gmang-cert
+$ gcloud compute target-https-proxies create https-target --url-map=URL_MAP_VALUE_FROM_ABOVE --ssl-certificates=demo-gmang-cert
 
 >> 
 Created [https://www.googleapis.com/compute/v1/projects/kube-https-demo/global/targetHttpsProxies/https-target].
@@ -117,14 +117,14 @@ https-target  demo-gmang-cert   k8s-um-default-demo-ing--3287e1f664ff7581
 
 Create a Global Static IP Address:
 ```bash
-$> gcloud compute addresses create static-https-ip --global --ip-version IPV4
+$ gcloud compute addresses create static-https-ip --global --ip-version IPV4
 
 >> Created [https://www.googleapis.com/compute/v1/projects/kube-https-demo/global/addresses/static-https-ip].
 ```
 
 Create a Global Forwarding Rule linking youre newly created IP Address:
 ```bash
-$> gcloud compute forwarding-rules create https-global-forwarding-rule --global --ip-protocol=TCP --ports=443 --target-https-proxy=https-target --address static-https-ip 
+$ gcloud compute forwarding-rules create https-global-forwarding-rule --global --ip-protocol=TCP --ports=443 --target-https-proxy=https-target --address static-https-ip 
 ``` 
 
 Adjust the Service to include the Target Proxy, edit demo-svc.yaml to include the target-proxy Annotation. **This is undocumented, could be a bad move...**
@@ -150,12 +150,12 @@ spec:
 
 Apply the new Service:
 ```bash
-$> kubetl apply -f demo-svc.yaml
+$ kubetl apply -f demo-svc.yaml
 ```
 
 Get the IP Address assigned to the Target Proxy:
 ```bash
-$> gcloud compute addresses list
+$ gcloud compute addresses list
  
 >>
 NAME             REGION  ADDRESS        STATUS
@@ -169,7 +169,7 @@ Create an A Record with the IP Address (on CloudFlare we turned off proxying, he
 Watch to see if your Cert has been provisioned, this could take as long as half an hour: 
 
 ```bash
-$> watch gcloud beta compute ssl-certificates list
+$ watch gcloud beta compute ssl-certificates list
 
 >>
 demo-gmang-cert  MANAGED  2018-10-29T10:47:05.450-07:00  2019-01-27T09:48:20.000-08:00  ACTIVE
