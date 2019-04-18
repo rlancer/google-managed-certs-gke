@@ -1,3 +1,6 @@
+# UPDATE — This guide has been deprecated! Refer to:
+https://cloud.google.com/kubernetes-engine/docs/how-to/managed-certs
+
 # How to use Google Managed SSL Certificates on GKE
  
 > Special thanks to [@dannyzen](https://github.com/dannyzen) from Google for helping Collaborizm move to GCP. He did help with this post but neither he nor Google endorse its methods.
